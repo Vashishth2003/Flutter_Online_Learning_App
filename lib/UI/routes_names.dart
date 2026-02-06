@@ -6,4 +6,5 @@ class RoutesNames{
   static const String checkOut = '/checkOut';
   static const String myCourseList = '/MyCourseList';
   static const String wishList = '/WishList';
+  static const String account = '/Account';
 }

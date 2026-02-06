@@ -11,42 +11,41 @@ class BottomOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
-      shape: CircularNotchedRectangle(),
-      notchMargin:5,
+      shape: const CircularNotchedRectangle(),
+      notchMargin: 5,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             InkWell(
-                  onTap: (){
-                    //On click of this option we will open respective screen
-                    openScreen(context, 1);
-                  },
-                  child: Padding(
-                              padding: const EdgeInsets.all(4),
-                              child: Column(
+              onTap: () {
+                //On click of this option we will open respective screen
+                openScreen(context, 1);
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(4),
+                child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(Icons.home,
+                    Icon(
+                      Icons.home,
                       color: getSelectedColor(1),
                     ),
-                    SizedBox(
-                        height: 5
-                    ),
+                    const SizedBox(height: 5),
                     Text(
-                        "Home",
+                      "Home",
                       style: TextStyle(
                         fontSize: 13,
                         color: getSelectedColor(1),
                       ),
                     ),
                   ],
-                              ),
-                            ),
                 ),
+              ),
+            ),
             InkWell(
-              onTap: (){
+              onTap: () {
                 //On click of this option we will open respective screen
                 openScreen(context, 2);
               },
@@ -55,12 +54,11 @@ class BottomOption extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(Icons.play_circle_outline,
+                    Icon(
+                      Icons.play_circle_outline,
                       color: getSelectedColor(2),
                     ),
-                    SizedBox(
-                        height: 5
-                    ),
+                    const SizedBox(height: 5),
                     Text(
                       "My Courses",
                       style: TextStyle(
@@ -73,7 +71,7 @@ class BottomOption extends StatelessWidget {
               ),
             ),
             InkWell(
-              onTap: (){
+              onTap: () {
                 //On click of this option we will open respective screen
                 openScreen(context, 3);
               },
@@ -82,12 +80,11 @@ class BottomOption extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(Icons.favorite_border,
+                    Icon(
+                      Icons.favorite_border,
                       color: getSelectedColor(3),
                     ),
-                    SizedBox(
-                        height: 5
-                    ),
+                    const SizedBox(height: 5),
                     Text(
                       "WishList",
                       style: TextStyle(
@@ -100,7 +97,7 @@ class BottomOption extends StatelessWidget {
               ),
             ),
             InkWell(
-              onTap: (){
+              onTap: () {
                 //On click of this option we will open respective screen
                 openScreen(context, 4);
               },
@@ -109,12 +106,11 @@ class BottomOption extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(Icons.people,
+                    Icon(
+                      Icons.people,
                       color: getSelectedColor(4),
                     ),
-                    SizedBox(
-                        height: 5
-                    ),
+                    const SizedBox(height: 5),
                     Text(
                       "Account",
                       style: TextStyle(
@@ -131,23 +127,28 @@ class BottomOption extends StatelessWidget {
       ),
     );
   }
-  Color getSelectedColor(int optionIndex){
-    return (selectedIndex == optionIndex)
-        ? kPrimaryColor
-        : Colors.grey.shade800;
+
+  Color getSelectedColor(int optionIndex) {
+    return (selectedIndex == optionIndex) ? kPrimaryColor : Colors.grey.shade800;
   }
 
-  void openScreen(BuildContext context, int selectedOptionNo){
+  void openScreen(BuildContext context, int selectedOptionNo) {
     String routeName = RoutesNames.courseHome;
-    switch(selectedOptionNo){
-      case 2 :
+    switch (selectedOptionNo) {
+      case 1:
+        routeName = RoutesNames.courseHome;
+        break;
+      case 2:
         routeName = RoutesNames.myCourseList;
         break;
-
-      case 3 :
+      case 3:
         routeName = RoutesNames.wishList;
+        break;
+      case 4:
+        routeName = RoutesNames.account;
         break;
     }
     Navigator.pushReplacementNamed(context, routeName);
   }
 }
+
